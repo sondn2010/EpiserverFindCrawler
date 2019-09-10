@@ -11,6 +11,11 @@ namespace sodo.EPiServer.Find.Crawler.Parsers
 {
     public class EpiserverWorldBlogParser : DocumentParserBase
     {
+        /// <summary>
+        /// Gets content results from source url.
+        /// </summary>
+        /// <param name="url">The source url.</param>
+        /// <returns>The search contents.</returns>
         public override IEnumerable<ISearchContent> GetResults(string url)
         {
             WebClient wclient = new WebClient();

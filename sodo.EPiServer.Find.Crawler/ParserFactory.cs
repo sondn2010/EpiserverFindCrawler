@@ -7,15 +7,14 @@ namespace sodo.EPiServer.Find.Crawler
 {
     public class ParserFactory
     {
-        Dictionary<string, IParser> AvailaibleParser;
+        Dictionary<string, IParser> _availaibleParser;
 
         private static volatile ParserFactory _instance;   // declared to be volatile to ensure that assignment to the instance variable completes before the instance variable can be accessed
         private static object syncRoot = new Object();
 
         private ParserFactory()
         {
-            //TODO: We can set this in attribute.
-            AvailaibleParser = new Dictionary<string, IParser>
+            _availaibleParser = new Dictionary<string, IParser>
             {
                 { "https://world.episerver.com/blogs/?feed=RSS", new EpiserverWorldBlogParser() },
                 { "https://world.episerver.com/forum/", new EpiserverWorldForumParser() },
@@ -41,9 +40,14 @@ namespace sodo.EPiServer.Find.Crawler
             }
         }
 
+        /// <summary>
+        /// Gets the parser.
+        /// </summary>
+        /// <param name="url">The source url.</param>
+        /// <returns>The parser.</returns>
         public virtual IParser GetParser(string url)
         {
-            var parser = AvailaibleParser.Where(e => url.Contains(e.Key)).Select(e => e.Value).SingleOrDefault();
+            var parser = _availaibleParser.Where(e => url.Contains(e.Key)).Select(e => e.Value).SingleOrDefault();
             return parser;
         }
 

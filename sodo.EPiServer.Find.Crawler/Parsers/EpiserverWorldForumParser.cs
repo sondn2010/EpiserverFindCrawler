@@ -14,8 +14,13 @@ namespace sodo.EPiServer.Find.Crawler.Parsers
 {
     public class EpiserverWorldForumParser : DocumentParserBase
     {
-        int DELAY_INTERVAL = 1000; // Slow down the crawling.
+        int _delayInterval = 1000; // Slow down the crawling.
 
+        /// <summary>
+        /// Gets content results from source url.
+        /// </summary>
+        /// <param name="url">The source url.</param>
+        /// <returns>The search contents.</returns>
         public override IEnumerable<ISearchContent> GetResults(string url)
         {
             IList<EPiServerWorldForumContent> retVal = new List<EPiServerWorldForumContent>();
@@ -46,7 +51,7 @@ namespace sodo.EPiServer.Find.Crawler.Parsers
                     {
                         retVal.Add(content);
                     }
-                    Thread.Sleep(DELAY_INTERVAL);
+                    Thread.Sleep(_delayInterval);
                 });
                 taskList.Add(t);
             }

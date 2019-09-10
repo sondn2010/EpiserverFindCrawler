@@ -9,7 +9,7 @@ namespace sodo.EPiServer.Find.Crawler
     public interface IParser
     {
         /// <summary>
-        /// Gets ISearchContent from an url.
+        /// Gets search contents from an url.
         /// </summary>
         /// <param name="url">The crawled url.</param>
         /// <returns>The list of crawled content.</returns>

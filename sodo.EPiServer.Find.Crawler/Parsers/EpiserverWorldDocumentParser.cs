@@ -9,8 +9,12 @@ using EPiServer.Find.UnifiedSearch;
 namespace sodo.EPiServer.Find.Crawler.Parsers
 {
     public class EpiserverWorldDocumentParser : IParser
-    {        
-        //TODO
+    {
+        /// <summary>
+        /// Gets content results from source url.
+        /// </summary>
+        /// <param name="url">The source url.</param>
+        /// <returns>The search contents.</returns>
         public IEnumerable<ISearchContent> GetResults(string url)
         {
             // var htmlDocument = SendRequest(url).Wait();
@@ -29,8 +33,6 @@ namespace sodo.EPiServer.Find.Crawler.Parsers
                 SearchHitUrl = url,
 
             };
-
-
 
             return null;
         }
